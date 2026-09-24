@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "constancia_solvencias",
+  "info": {
+    "singularName": "constancia-solvencia",
+    "pluralName": "constancia-solvencias",
+    "displayName": "Constancias de Solvencia"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "empresa": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::empresa.empresa",
+      "required": true
+    },
+    "filial": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::filial.filial"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sector_desempenos",
+  "info": {
+    "singularName": "sector-desempeno",
+    "pluralName": "sector-desempenos",
+    "displayName": "Sectores de Desempeño"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Sector": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

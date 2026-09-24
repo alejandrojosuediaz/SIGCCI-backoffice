@@ -1,0 +1,17 @@
+{
+  "name": "visual-tags-content",
+  "version": "0.1.0",
+  "description": "Flexible visual indicators for Strapi Content Manager",
+  "strapi": {
+    "name": "visual-tags-content",
+    "displayName": "Visual Tags Content",
+    "description": "Visual indicators and conditional badges for Strapi collections",
+    "kind": "plugin"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

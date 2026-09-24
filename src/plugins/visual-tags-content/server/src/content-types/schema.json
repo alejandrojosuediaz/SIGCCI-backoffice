@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "visual_tags_configs",
+  "info": {
+    "singularName": "config",
+    "pluralName": "configs",
+    "displayName": "Visual Tags Configuration"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": false
+    },
+    "content-type-builder": {
+      "visible": false
+    }
+  },
+  "attributes": {
+    "uid": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tags": {
+      "type": "json",
+      "default": []
+    }
+  }
+}

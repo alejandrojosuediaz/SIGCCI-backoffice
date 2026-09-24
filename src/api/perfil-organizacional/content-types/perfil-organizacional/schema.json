@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "perfil_organizacionals",
+  "info": {
+    "singularName": "perfil-organizacional",
+    "pluralName": "perfil-organizacionals",
+    "displayName": "Perfil organizacional"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Seccion": {
+      "type": "dynamiczone",
+      "components": [
+        "componentes.actividad",
+        "componentes.tarjeta"
+      ],
+      "min": 2
+    }
+  }
+}

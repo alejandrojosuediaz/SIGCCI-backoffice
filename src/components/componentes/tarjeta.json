@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_componentes_tarjetas",
+  "info": {
+    "displayName": "Tarjeta",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "Imagen": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Titulo": {
+      "type": "string",
+      "required": true
+    },
+    "Descripcion": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_pagina_sobres",
+  "info": {
+    "displayName": "Sobre",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "Tarjeta": {
+      "type": "component",
+      "component": "componentes.tarjeta",
+      "repeatable": true,
+      "min": 1
+    }
+  },
+  "config": {}
+}

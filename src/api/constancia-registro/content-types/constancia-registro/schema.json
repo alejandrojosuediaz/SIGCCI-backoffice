@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "constancia_registros",
+  "info": {
+    "singularName": "constancia-registro",
+    "pluralName": "constancia-registros",
+    "displayName": "Constancias de Registro"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "empresa": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::empresa.empresa",
+      "required": true
+    },
+    "filial": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::filial.filial"
+    }
+  }
+}

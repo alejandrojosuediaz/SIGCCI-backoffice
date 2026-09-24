@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "denominacions",
+  "info": {
+    "singularName": "denominacion",
+    "pluralName": "denominacions",
+    "displayName": "Denominaciones"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Denominacion": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

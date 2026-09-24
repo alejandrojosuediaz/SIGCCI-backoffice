@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tipo_tramites",
+  "info": {
+    "singularName": "tipo-tramite",
+    "pluralName": "tipo-tramites",
+    "displayName": "Tipos de Trámite",
+    "description": "Tipos de trámites disponibles en el sistema"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Tipo": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

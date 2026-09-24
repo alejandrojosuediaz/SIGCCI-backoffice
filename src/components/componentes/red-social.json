@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_componentes_red_socials",
+  "info": {
+    "displayName": "Red social",
+    "icon": "attachment"
+  },
+  "options": {},
+  "attributes": {
+    "Tipo": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Facebook",
+        "X",
+        "Instagram",
+        "Linkendin",
+        "YouTube"
+      ]
+    },
+    "Enlace": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  },
+  "config": {}
+}

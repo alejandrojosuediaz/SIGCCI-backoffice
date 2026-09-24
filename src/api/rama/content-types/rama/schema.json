@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ramas",
+  "info": {
+    "singularName": "rama",
+    "pluralName": "ramas",
+    "displayName": "Ramas"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rama": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

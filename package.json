@@ -1,0 +1,52 @@
+{
+  "name": "ccilp-v-5",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Strapi application",
+  "scripts": {
+    "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+  },
+  "dependencies": {
+    "@strapi/database": "5.54.0",
+    "@strapi/plugin-cloud": "5.54.0",
+    "@strapi/plugin-users-permissions": "5.54.0",
+    "@strapi/provider-email-nodemailer": "5.54.0",
+    "@strapi/strapi": "5.54.0",
+    "@vivinkv28/strapi-2fa-admin-plugin": "^0.1.15",
+    "export-import-kkm": "^1.1.1",
+    "node-schedule": "^2.1.0",
+    "pg": "8.20.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.30.3",
+    "strapi-cache": "^1.12.2",
+    "strapi-plugin-auto-locales-slug": "^0.0.4",
+    "strapi-plugin-content-manager-organizer": "^2.0.3",
+    "strapi-plugin-logz": "^0.0.10",
+    "strapi-plugin-required-relation-field": "^0.3.1",
+    "strapi-provider-email-nodemailer": "^2.0.0",
+    "styled-components": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=20.0.0 <=26.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "1e9bf7d7-4c9f-4602-8454-2ca28c3dbf5c",
+    "installId": "07c0583c6c8c8ed91cb3af8b7c545752fad5ade6a327b68741482045a39f7f3c"
+  }
+}

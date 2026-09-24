@@ -1,0 +1,116 @@
+{
+  "kind": "collectionType",
+  "collectionName": "filials",
+  "info": {
+    "singularName": "filial",
+    "pluralName": "filials",
+    "displayName": "Filiales"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Abreviatura": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Filial": {
+      "type": "string",
+      "required": true
+    },
+    "UsarCamara": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "CodigoRegion": {
+      "type": "string",
+      "default": "0000",
+      "minLength": 4,
+      "maxLength": 4,
+      "unique": true
+    },
+    "Director": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "UsarCamara"
+            },
+            false
+          ]
+        }
+      }
+    },
+    "Telefonos": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "UsarCamara"
+            },
+            false
+          ]
+        }
+      }
+    },
+    "Direccion": {
+      "type": "text",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "UsarCamara"
+            },
+            false
+          ]
+        }
+      }
+    },
+    "CorreosElectronicos": {
+      "type": "text",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "UsarCamara"
+            },
+            false
+          ]
+        }
+      }
+    },
+    "Website": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "UsarCamara"
+            },
+            false
+          ]
+        }
+      }
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "QR": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

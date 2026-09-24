@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_componentes_actividads",
+  "info": {
+    "displayName": "Actividad",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string",
+      "required": true
+    },
+    "Descripcion": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}

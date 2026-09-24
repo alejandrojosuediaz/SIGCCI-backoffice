@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_pagina_representantes",
+  "info": {
+    "displayName": "Representantes",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "Representantes": {
+      "type": "component",
+      "component": "componentes.representantes",
+      "repeatable": true,
+      "required": false,
+      "min": 1
+    }
+  },
+  "config": {}
+}

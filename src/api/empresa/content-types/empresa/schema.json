@@ -1,0 +1,175 @@
+{
+  "kind": "collectionType",
+  "collectionName": "empresas",
+  "info": {
+    "singularName": "empresa",
+    "pluralName": "empresas",
+    "displayName": "Empresas"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Activo": {
+      "type": "boolean",
+      "default": true
+    },
+    "tipo_tramite": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tipo-tramite.tipo-tramite",
+      "required": true
+    },
+    "filial": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::filial.filial",
+      "required": true
+    },
+    "NombreEmpresa": {
+      "type": "string",
+      "required": true
+    },
+    "NombreComercial": {
+      "type": "string",
+      "required": true
+    },
+    "Direccion": {
+      "type": "text",
+      "required": true
+    },
+    "TelefonoFax": {
+      "type": "string"
+    },
+    "Celular": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 8,
+      "required": true
+    },
+    "CorreoElectronico": {
+      "type": "email"
+    },
+    "RTN": {
+      "type": "string",
+      "minLength": 14,
+      "maxLength": 14,
+      "required": true
+    },
+    "Clasificacion": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Micro",
+        "Pequeña",
+        "Mediana",
+        "Grande",
+        "Exenta de Impuestos"
+      ]
+    },
+    "NombreRepresentante": {
+      "type": "string",
+      "required": true
+    },
+    "NombreSubgerente": {
+      "type": "string"
+    },
+    "Encargado": {
+      "type": "string"
+    },
+    "denominacion": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::denominacion.denominacion",
+      "required": true
+    },
+    "NombreSocios": {
+      "type": "text"
+    },
+    "NumeroEscritura": {
+      "type": "string"
+    },
+    "FechaConstitucion": {
+      "type": "date"
+    },
+    "RegistroMercantil": {
+      "type": "integer"
+    },
+    "TomoMercantil": {
+      "type": "integer"
+    },
+    "FechaMercantil": {
+      "type": "date"
+    },
+    "LugarDeclaracion": {
+      "type": "string"
+    },
+    "NumeroEmpleados": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "ActividadEmpresarial": {
+      "type": "text",
+      "required": true
+    },
+    "CapitalMaximo": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "sector_desempenos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sector-desempeno.sector-desempeno",
+      "required": true
+    },
+    "NumeroRegistro": {
+      "type": "string",
+      "required": true
+    },
+    "FOLIO": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "TOMO": {
+      "type": "string",
+      "maxLength": 3,
+      "required": true
+    },
+    "categoria": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::categoria.categoria",
+      "required": true
+    },
+    "PagoAfiliacion": {
+      "type": "decimal",
+      "min": 0
+    },
+    "CuotaMensual": {
+      "type": "decimal",
+      "min": 0
+    },
+    "ramas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rama.rama",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "NombreEmpresa",
+      "required": true
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
