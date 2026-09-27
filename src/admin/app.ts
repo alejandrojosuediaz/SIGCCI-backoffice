@@ -84,5 +84,12 @@ export default {
             characterData: true,
             subtree: true,
         });
+        const style = document.createElement('style');
+        style.innerHTML = `
+      a[href="https://strapi.io/pricing-self-hosted"] {
+        display: none !important;
+      }
+    `;
+        document.head.appendChild(style);
     },
 };
