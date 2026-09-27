@@ -8,9 +8,9 @@ const config = {
 
 export default {
     config: {
+        tutorials: false,
         notifications: {
             releases: false, // Desactiva el aviso de nuevas versiones
-            tutorials: false,
         },
         menu: {
             deploy: false
