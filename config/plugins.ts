@@ -28,7 +28,18 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
     config: {
       jwtManagement: 'refresh',
       sessions: {
-        httpOnly: true,
+        accessTokenLifespan: 600,
+        maxRefreshTokenLifespan: 2592000,
+        idleRefreshTokenLifespan: 1209600,
+        maxSessionLifespan: 86400,
+        idleSessionLifespan: 7200,
+        httpOnly: false,
+        cookie: {
+          name: 'strapi_up_refresh',
+          sameSite: 'lax',
+          path: '/',
+          secure: false, // fuerza no-secure aunque NODE_ENV sea production
+        },
       },
     },
   },
@@ -81,7 +92,7 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
       excludeEndpoints: [
         "/admin/renew-token",
         "/api/upload",
-       // "/api/any-custom-type/any-custom-route",
+        // "/api/any-custom-type/any-custom-route",
       ],
       redactedValues: [
         "password",
