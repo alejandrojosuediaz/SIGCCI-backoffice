@@ -47,10 +47,12 @@ export default {
             en: {
                 'Auth.form.welcome.title': 'Welcome to SIGCCI',
                 'Auth.form.welcome.subtitle': 'Log in to continue',
+                'Settings.profile.form.section.experience.interfaceLanguageHelp': 'Preference changes will apply only to you.',
             },
             es: {
                 'Auth.form.welcome.title': 'Bienvenido a SIGCCI',
                 'Auth.form.welcome.subtitle': 'Inicie sesión para continuar',
+                'Settings.profile.form.section.experience.interfaceLanguageHelp': 'La selección cambiará el idioma de la interfaz solo para usted.',
             },
         },
     },
