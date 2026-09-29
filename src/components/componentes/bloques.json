@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_componentes_bloques",
+  "info": {
+    "displayName": "Bloques",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string",
+      "required": true
+    },
+    "Bloque": {
+      "type": "component",
+      "component": "componentes.actividad",
+      "repeatable": true,
+      "min": 1
+    }
+  },
+  "config": {}
+}

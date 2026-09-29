@@ -28,6 +28,11 @@
     },
     "Website": {
       "type": "string"
+    },
+    "Colaboradores": {
+      "type": "component",
+      "component": "componentes.representantes",
+      "repeatable": true
     }
   }
 }

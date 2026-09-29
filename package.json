@@ -29,6 +29,7 @@
     "react-router-dom": "^6.30.3",
     "strapi-cache": "^1.12.2",
     "strapi-plugin-auto-locales-slug": "^0.0.4",
+    "strapi-plugin-component-docs": "^1.0.3",
     "strapi-plugin-content-manager-organizer": "^2.0.3",
     "strapi-plugin-logz": "^0.0.10",
     "strapi-plugin-required-relation-field": "^0.3.1",

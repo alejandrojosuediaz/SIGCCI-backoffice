@@ -14,8 +14,8 @@
     "Seccion": {
       "type": "dynamiczone",
       "components": [
-        "componentes.actividad",
-        "componentes.tarjeta"
+        "componentes.tarjeta",
+        "componentes.bloques"
       ],
       "min": 2
     }

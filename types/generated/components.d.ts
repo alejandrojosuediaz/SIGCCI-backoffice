@@ -12,6 +12,24 @@ export interface ComponentesActividad extends Struct.ComponentSchema {
   };
 }
 
+export interface ComponentesBloques extends Struct.ComponentSchema {
+  collectionName: 'components_componentes_bloques';
+  info: {
+    displayName: 'Bloques';
+    icon: 'dashboard';
+  };
+  attributes: {
+    Bloque: Schema.Attribute.Component<'componentes.actividad', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    Titulo: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ComponentesRedSocial extends Struct.ComponentSchema {
   collectionName: 'components_componentes_red_socials';
   info: {
@@ -96,6 +114,7 @@ declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
       'componentes.actividad': ComponentesActividad;
+      'componentes.bloques': ComponentesBloques;
       'componentes.red-social': ComponentesRedSocial;
       'componentes.representantes': ComponentesRepresentantes;
       'componentes.tarjeta': ComponentesTarjeta;

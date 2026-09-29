@@ -484,6 +484,10 @@ export interface ApiConfiguracionConfiguracion extends Struct.SingleTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    Colaboradores: Schema.Attribute.Component<
+      'componentes.representantes',
+      true
+    >;
     CorreosElectronicos: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -915,7 +919,7 @@ export interface ApiPerfilOrganizacionalPerfilOrganizacional
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     Seccion: Schema.Attribute.DynamicZone<
-      ['componentes.actividad', 'componentes.tarjeta']
+      ['componentes.tarjeta', 'componentes.bloques']
     > &
       Schema.Attribute.SetMinMax<
         {
