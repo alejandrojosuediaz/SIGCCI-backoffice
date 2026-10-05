@@ -11,6 +11,10 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "NombreInstitucion": {
+      "type": "string",
+      "required": true
+    },
     "Director": {
       "type": "string"
     },
@@ -33,6 +37,22 @@
       "type": "component",
       "component": "componentes.representantes",
       "repeatable": true
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "QR": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

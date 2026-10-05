@@ -2,7 +2,19 @@
   "version": 1,
   "sections": {
     "collectionTypes": {
-      "groups": []
+      "groups": [
+        {
+          "parent": null,
+          "name": "web",
+          "id": "grp_8ae5476e0eee49008c74036e",
+          "children": [
+            {
+              "uid": "api::sitios-web.sitios-web",
+              "type": "contentType"
+            }
+          ]
+        }
+      ]
     },
     "singleTypes": {
       "groups": []

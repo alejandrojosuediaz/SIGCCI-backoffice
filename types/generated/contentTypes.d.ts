@@ -500,7 +500,10 @@ export interface ApiConfiguracionConfiguracion extends Struct.SingleTypeSchema {
       'api::configuracion.configuracion'
     > &
       Schema.Attribute.Private;
+    Logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    NombreInstitucion: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    QR: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     Telefonos: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -526,7 +529,8 @@ export interface ApiConstanciaRegistroConstanciaRegistro
       Schema.Attribute.Private;
     empresa: Schema.Attribute.Relation<'oneToOne', 'api::empresa.empresa'> &
       Schema.Attribute.Required;
-    filial: Schema.Attribute.Relation<'oneToOne', 'api::filial.filial'>;
+    filial: Schema.Attribute.Relation<'oneToOne', 'api::filial.filial'> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -557,7 +561,8 @@ export interface ApiConstanciaRenovacionConstanciaRenovacion
       Schema.Attribute.Private;
     empresa: Schema.Attribute.Relation<'oneToOne', 'api::empresa.empresa'> &
       Schema.Attribute.Required;
-    filial: Schema.Attribute.Relation<'oneToOne', 'api::filial.filial'>;
+    filial: Schema.Attribute.Relation<'oneToOne', 'api::filial.filial'> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -588,7 +593,8 @@ export interface ApiConstanciaSolvenciaConstanciaSolvencia
       Schema.Attribute.Private;
     empresa: Schema.Attribute.Relation<'oneToOne', 'api::empresa.empresa'> &
       Schema.Attribute.Required;
-    filial: Schema.Attribute.Relation<'oneToOne', 'api::filial.filial'>;
+    filial: Schema.Attribute.Relation<'oneToOne', 'api::filial.filial'> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -846,7 +852,7 @@ export interface ApiFilialFilial extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    QR: Schema.Attribute.Media<'images', true>;
+    QR: Schema.Attribute.Media<'images'>;
     Telefonos: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -972,19 +978,81 @@ export interface ApiProyectoProyecto extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    Afiliado: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    Ciudad: Schema.Attribute.String & Schema.Attribute.Required;
+    CorreoElectronico: Schema.Attribute.Email & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Direccion: Schema.Attribute.Text & Schema.Attribute.Required;
+    emprendedor: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::emprendedor.emprendedor'
+    > &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::proyecto.proyecto'
     > &
       Schema.Attribute.Private;
+    NombreComercial: Schema.Attribute.String & Schema.Attribute.Required;
+    NumeroEmpleados: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    NumeroHombres: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    ProductosServicios: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    RTN: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 14;
+        minLength: 14;
+      }>;
+    Rubro: Schema.Attribute.String & Schema.Attribute.Required;
+    Telefono: Schema.Attribute.String & Schema.Attribute.Required;
+    TiempoOperar: Schema.Attribute.Enumeration<
+      ['De 1 a\u00F1o', 'De 2-5 a\u00F1os', 'De 6 a\u00F1os o mas']
+    > &
+      Schema.Attribute.Required;
+    TipoNegocio: Schema.Attribute.Enumeration<
+      ['Propio', 'Familiar', 'Sociedad']
+    > &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    VentasAnuales: Schema.Attribute.Enumeration<
+      [
+        'De 10,000 - 30,000',
+        'De 30,001 - 60,000',
+        'De 60,001 - 80,000',
+        'De 80,001 en adelante',
+      ]
+    > &
+      Schema.Attribute.Required;
+    VentasMensuales: Schema.Attribute.Enumeration<
+      [
+        'De 500 - 3,000',
+        'De 3,001 - 6,000',
+        'De 6,001 - 10,000',
+        'De 10,001 en adelante',
+      ]
+    > &
+      Schema.Attribute.Required;
   };
 }
 
@@ -1046,7 +1114,7 @@ export interface ApiSectorDesempenoSectorDesempeno
   };
 }
 
-export interface ApiSitiosWebSitiosWeb extends Struct.SingleTypeSchema {
+export interface ApiSitiosWebSitiosWeb extends Struct.CollectionTypeSchema {
   collectionName: 'sitios_webs';
   info: {
     displayName: 'Sitio web';
@@ -1057,14 +1125,6 @@ export interface ApiSitiosWebSitiosWeb extends Struct.SingleTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    Actividades: Schema.Attribute.DynamicZone<['componentes.actividad']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1074,18 +1134,7 @@ export interface ApiSitiosWebSitiosWeb extends Struct.SingleTypeSchema {
       'api::sitios-web.sitios-web'
     > &
       Schema.Attribute.Private;
-    PaginaSobre: Schema.Attribute.Component<'pagina.sobre', false> &
-      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    RedesSociales: Schema.Attribute.DynamicZone<['componentes.red-social']>;
-    Representantes: Schema.Attribute.DynamicZone<['pagina.representantes']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

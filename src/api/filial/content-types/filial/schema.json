@@ -107,7 +107,17 @@
     },
     "QR": {
       "type": "media",
-      "multiple": true,
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "UsarCamara"
+            },
+            false
+          ]
+        }
+      },
+      "multiple": false,
       "allowedTypes": [
         "images"
       ]

@@ -10,5 +10,100 @@
     "draftAndPublish": false
   },
   "pluginOptions": {},
-  "attributes": {}
+  "attributes": {
+    "NombreComercial": {
+      "type": "string",
+      "required": true
+    },
+    "RTN": {
+      "type": "string",
+      "minLength": 14,
+      "maxLength": 14,
+      "required": true,
+      "unique": true
+    },
+    "Direccion": {
+      "type": "text",
+      "required": true
+    },
+    "Ciudad": {
+      "type": "string",
+      "required": true
+    },
+    "Telefono": {
+      "type": "string",
+      "required": true
+    },
+    "CorreoElectronico": {
+      "type": "email",
+      "required": true
+    },
+    "Rubro": {
+      "type": "string",
+      "required": true
+    },
+    "TiempoOperar": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "De 1 año",
+        "De 2-5 años",
+        "De 6 años o mas"
+      ]
+    },
+    "NumeroEmpleados": {
+      "type": "integer",
+      "required": true,
+      "unique": false,
+      "min": 0
+    },
+    "NumeroHombres": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "VentasMensuales": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "De 500 - 3,000",
+        "De 3,001 - 6,000",
+        "De 6,001 - 10,000",
+        "De 10,001 en adelante"
+      ]
+    },
+    "VentasAnuales": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "De 10,000 - 30,000",
+        "De 30,001 - 60,000",
+        "De 60,001 - 80,000",
+        "De 80,001 en adelante"
+      ]
+    },
+    "ProductosServicios": {
+      "type": "text",
+      "required": true
+    },
+    "emprendedor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::emprendedor.emprendedor",
+      "required": true
+    },
+    "TipoNegocio": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Propio",
+        "Familiar",
+        "Sociedad"
+      ]
+    },
+    "Afiliado": {
+      "type": "boolean",
+      "required": true
+    }
+  }
 }

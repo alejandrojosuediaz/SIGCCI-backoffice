@@ -20,7 +20,8 @@
     "filial": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::filial.filial"
+      "target": "api::filial.filial",
+      "required": true
     }
   }
 }

@@ -1,5 +1,4 @@
 {
-  "kind": "singleType",
   "collectionName": "sitios_webs",
   "info": {
     "singularName": "sitios-web",
@@ -10,35 +9,6 @@
     "draftAndPublish": false
   },
   "pluginOptions": {},
-  "attributes": {
-    "PaginaSobre": {
-      "type": "component",
-      "component": "pagina.sobre",
-      "repeatable": false,
-      "required": true
-    },
-    "Representantes": {
-      "type": "dynamiczone",
-      "components": [
-        "pagina.representantes"
-      ],
-      "required": true,
-      "min": 1
-    },
-    "Actividades": {
-      "type": "dynamiczone",
-      "components": [
-        "componentes.actividad"
-      ],
-      "required": true,
-      "min": 1
-    },
-    "RedesSociales": {
-      "type": "dynamiczone",
-      "components": [
-        "componentes.red-social"
-      ],
-      "required": false
-    }
-  }
+  "attributes": {},
+  "kind": "collectionType"
 }
