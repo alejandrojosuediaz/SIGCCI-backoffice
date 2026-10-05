@@ -1,0 +1,13 @@
+{
+  "name": "seniority-calculator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Custom field for calculating age and length of service",
+  "strapi": {
+    "name": "seniority-calculator",
+    "displayName": "Calculadora de antigüedad",
+    "description": "Calcula la edad o antigüedad desde un campo de fecha",
+    "kind": "plugin"
+  },
+  "dependencies": {}
+}

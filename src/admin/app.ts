@@ -1,10 +1,4 @@
-// src/admin/app.js
-const config = {
-    head: {
-        title: 'SIGCCI',
-    },
-    // ... otras configuraciones
-};
+// src/admin/app.ts
 
 export default {
     config: {

@@ -61,7 +61,7 @@ const getFieldValue = (record, fieldPath) => {
   return value;
 };
 
-const extractComparableValues = (value) => {
+const extractComparableValues = (value, seen = new Set()) => {
   const values = [];
 
   const pushValue = (entry) => {
@@ -83,6 +83,12 @@ const extractComparableValues = (value) => {
     }
 
     if (typeof entry === 'object') {
+      if (seen.has(entry)) {
+        return;
+      }
+
+      seen.add(entry);
+
       const relationKeys = ['id', 'documentId', '_id', 'name', 'title', 'slug', 'displayName', 'label', 'value'];
 
       relationKeys.forEach((key) => {
@@ -112,16 +118,40 @@ const extractComparableValues = (value) => {
   return [...new Set(values)];
 };
 
+const isEmptyValue = (value) => {
+  if (value === undefined || value === null || value === '') {
+    return true;
+  }
+
+  if (Array.isArray(value)) {
+    return value.length === 0 || value.every((entry) => entry === undefined || entry === null);
+  }
+
+  if (typeof value === 'object') {
+    const relationContainers = ['data', 'connect', 'set', 'results'];
+    const containerKeys = relationContainers.filter((key) =>
+      Object.prototype.hasOwnProperty.call(value, key)
+    );
+
+    return (
+      containerKeys.length > 0 &&
+      containerKeys.every((key) => extractComparableValues(value[key]).length === 0)
+    );
+  }
+
+  return false;
+};
+
 const evaluateCondition = (record, condition) => {
   const { field, operator = '=', value } = condition || {};
   const currentValue = getFieldValue(record, field);
 
   if (operator === 'isEmpty') {
-    return currentValue === undefined || currentValue === null || currentValue === '';
+    return isEmptyValue(currentValue);
   }
 
   if (operator === 'isNotEmpty') {
-    return currentValue !== undefined && currentValue !== null && currentValue !== '';
+    return !isEmptyValue(currentValue);
   }
 
   if (currentValue === undefined || currentValue === null) {

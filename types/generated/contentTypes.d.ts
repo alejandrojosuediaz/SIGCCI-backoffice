@@ -661,6 +661,14 @@ export interface ApiEmprendedorEmprendedor extends Struct.CollectionTypeSchema {
         maxLength: 13;
         minLength: 13;
       }>;
+    Edad: Schema.Attribute.String &
+      Schema.Attribute.CustomField<
+        'plugin::seniority-calculator.duration',
+        {
+          mode: 'years';
+          sourceField: 'FecNac';
+        }
+      >;
     FecNac: Schema.Attribute.Date & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

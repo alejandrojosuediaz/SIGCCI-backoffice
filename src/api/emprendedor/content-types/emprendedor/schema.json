@@ -58,6 +58,14 @@
     },
     "OtrosTramites": {
       "type": "string"
+    },
+    "Edad": {
+      "type": "customField",
+      "customField": "plugin::seniority-calculator.duration",
+      "options": {
+        "sourceField": "FecNac",
+        "mode": "years"
+      }
     }
   }
 }

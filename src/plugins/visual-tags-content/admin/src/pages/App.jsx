@@ -580,6 +580,7 @@ const App = () => {
   const { toggleNotification } = useNotification();
   const [contentTypes, setContentTypes] = useState([]);
   const [selectedContentType, setSelectedContentType] = useState(null);
+  const [fieldMetadatas, setFieldMetadatas] = useState({});
   const [rules, setRules] = useState([]);
   const [isSaving, setIsSaving] = useState(false);
   const [collectionQuery, setCollectionQuery] = useState('');
@@ -641,13 +642,80 @@ const App = () => {
     }
   }, [filteredCollectionTypes, selectedContentType]);
 
+  useEffect(() => {
+    let isActive = true;
+
+    const loadFieldMetadatas = async () => {
+      if (!selectedContentType?.uid) {
+        setFieldMetadatas({});
+        return;
+      }
+
+      try {
+        const { get } = getFetchClient();
+        const response = await get(
+          `/content-manager/content-types/${encodeURIComponent(selectedContentType.uid)}/configuration`
+        );
+        const metadatas = response?.data?.data?.contentType?.metadatas || {};
+
+        if (isActive) {
+          setFieldMetadatas(metadatas);
+        }
+      } catch (error) {
+        console.error(
+          '[visual-tags-content] Error obteniendo etiquetas de campos:',
+          error
+        );
+
+        if (isActive) {
+          setFieldMetadatas({});
+        }
+      }
+    };
+
+    loadFieldMetadatas();
+
+    return () => {
+      isActive = false;
+    };
+  }, [selectedContentType?.uid]);
+
+  const getFieldLabel = (fieldName) => {
+    const metadata = fieldMetadatas[fieldName];
+
+    return metadata?.edit?.label || metadata?.list?.label || fieldName;
+  };
+
   const getFieldType = (fieldName) => {
     if (!selectedContentType || !fieldName) {
       return null;
     }
 
-    return selectedContentType.attributes?.[fieldName]?.type || null;
+    const attribute = selectedContentType.attributes?.[fieldName];
+
+    if (attribute?.customField === 'plugin::seniority-calculator.duration') {
+      const mode = attribute.options?.mode || 'years';
+
+      if (mode === 'decimalYears') {
+        return 'decimal';
+      }
+
+      if (mode === 'years' || mode === 'totalDays') {
+        return 'integer';
+      }
+
+      return 'string';
+    }
+
+    return attribute?.type || null;
   };
+
+  const getFieldTypeLabel = (fieldName, attribute) =>
+    attribute?.customField === 'plugin::seniority-calculator.duration'
+      ? isNumberField(getFieldType(fieldName))
+        ? 'número calculado'
+        : 'texto calculado'
+      : attribute?.type;
 
   const isNumberField = (fieldType) =>
     ['integer', 'biginteger', 'float', 'decimal', 'number'].includes(fieldType);
@@ -1167,8 +1235,8 @@ const App = () => {
                       ) : (
                         availableAttributes.map(([fieldName, field]) => (
                           <span key={fieldName} className="visual-tags-field-pill">
-                            {fieldName}
-                            <span>· {field.type}</span>
+                            {getFieldLabel(fieldName)}
+                            <span>· {getFieldTypeLabel(fieldName, field)}</span>
                           </span>
                         ))
                       )}
@@ -1276,7 +1344,7 @@ const App = () => {
                                         <option value="">Seleccionar campo</option>
                                         {availableAttributes.map(([fieldName, field]) => (
                                         <option key={fieldName} value={fieldName}>
-                                          {fieldName} — {field.type}
+                                          {getFieldLabel(fieldName)} — {getFieldTypeLabel(fieldName, field)}
                                         </option>
                                       ))}
                                       </select>

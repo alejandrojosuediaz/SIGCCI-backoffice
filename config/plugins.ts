@@ -55,6 +55,10 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
     enabled: true,
     resolve: './src/plugins/visual-tags-content',
   },
+  'seniority-calculator': {
+    enabled: true,
+    resolve: './src/plugins/seniority-calculator',
+  },
   email: {
     config: {
       provider: 'nodemailer',
